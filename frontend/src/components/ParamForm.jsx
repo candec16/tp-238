@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Sliders, Clock, Users, Phone, Footprints, Lock, Unlock } from 'lucide-react';
 
 export const ParamForm = ({ params, setParams, onSimular, loading }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [permitirEdicion, setPermitirEdicion] = useState(false);
 
   const handleDistTypeChange = (category, tipo) => {

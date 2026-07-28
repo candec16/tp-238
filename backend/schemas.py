@@ -13,7 +13,7 @@ class SimulacionRequest(BaseModel):
     mostrar_desde_j: int = Field(default=1, description="Fila j a mostrar en el vector de estado (1-indexed)")
     cantidad_filas_i: int = Field(default=50, description="Cantidad de filas i a mostrar en el vector de estado")
     
-    # Configuraciones de Distribución para cada evento
+    # Configuraciones de Distribución para cada evento por default
     llegadas: DistribucionConfig = Field(default_factory=lambda: DistribucionConfig(tipo="uniforme", a=5.0, b=15.0))         # 10 +/- 5 min
     caminata: DistribucionConfig = Field(default_factory=lambda: DistribucionConfig(tipo="uniforme", a=2.0, b=4.0))           # 3 +/- 1 min
     atencion_empleado: DistribucionConfig = Field(default_factory=lambda: DistribucionConfig(tipo="uniforme", a=2.0, b=6.0)) # 4 +/- 2 min
