@@ -111,6 +111,17 @@ export const exportarAExcel = (metricas, vectorEstado, evolucionMinutos) => {
 
   XLSX.utils.book_append_sheet(wb, wsMinutos, "Clientes por Minuto");
 
-  // Descargar archivo Excel
-  XLSX.writeFile(wb, "Simulacion_Telefonica.xlsx");
+  // Descargar archivo Excel con tipo MIME explícito para que Windows lo reconozca
+  const wbout = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+  const blob = new Blob([wbout], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Simulacion_Telefonica.xlsx';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 };
